@@ -1,10 +1,15 @@
 {
   "ambientDevDependencies": {
     "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
+    "cucumber": "registry:dt/cucumber#0.0.0+20160316171810",
     "jasmine": "registry:dt/jasmine#2.2.0+20160412134438",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   },
   "ambientDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654"
+  },
+  "devDependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160415060238",
+    "chai-as-promised": "registry:npm/chai-as-promised#5.1.0+20160310030142"
   }
 }
