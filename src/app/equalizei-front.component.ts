@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['equalizei-front.component.css']
 })
 export class EqualizeiFrontAppComponent {
-  title = 'equalizei-front works!';
+  title = 'Equalizei rocks!';
 }
