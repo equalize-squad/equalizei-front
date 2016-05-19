@@ -1,6 +1,7 @@
 # Equalizei Front
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Code Climate](https://codeclimate.com/github/equalize-squad/equalizei-front/badges/gpa.svg)](https://codeclimate.com/github/equalize-squad/equalizei-front)
 
 ## Setup the project
 
