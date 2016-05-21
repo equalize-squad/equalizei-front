@@ -15,8 +15,8 @@ describe('App: EqualizeiFront', () => {
     expect(app).toBeTruthy();
   }));
 
-  it('should have as title \'equalizei-front works!\'',
+  it('should have as title \'Equalizei rocks!\'',
       inject([EqualizeiFrontAppComponent], (app: EqualizeiFrontAppComponent) => {
-    expect(app.title).toEqual('equalizei-front works!');
+    expect(app.title).toEqual('Equalizei rocks!');
   }));
 });
