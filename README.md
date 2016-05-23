@@ -19,12 +19,22 @@
 ## Running unit tests
 
 ```bash
-ng test
+npm test
 ```
 Tests will execute after a build is executed via [Karma](http://karma-runner.github.io/0.13/index.html)
 
 If run with the watch argument `--watch` (shorthand `-w`) builds will run when source files have changed
 and tests will run after each successful build
+
+### Coverage
+
+After ran the unit tests, run the following command to see the coverage:
+
+```bash
+npm run coverage
+```
+
+and see the reports at `coverage` folder
 
 ## Running end-to-end tests
 
