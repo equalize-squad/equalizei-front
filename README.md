@@ -2,7 +2,7 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Code Climate](https://codeclimate.com/github/equalize-squad/equalizei-front/badges/gpa.svg)](https://codeclimate.com/github/equalize-squad/equalizei-front)
-[![Test Coverage](https://codeclimate.com/github/equalize-squad/equalizei-front/badges/coverage.svg)](https://codeclimate.com/github/equalize-squad/equalizei-front/coverage)
+[![Codecov](https://codecov.io/gh/equalize-squad/equalizei-front/branch/master/graph/badge.svg)](https://codecov.io/gh/equalize-squad/equalizei-front)
 
 ## Setup the project
 
