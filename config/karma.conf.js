@@ -4,7 +4,10 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-chrome-launcher')
+      require('karma-phantomjs-launcher'),
+      require('karma-mocha-reporter'),
+      require('karma-sourcemap-loader'),
+      require('karma-coverage')
     ],
     customLaunchers: {
       // chrome setup for travis CI using chromium
@@ -30,13 +33,26 @@ module.exports = function (config) {
       // Vendor packages might include spec files. We don't want to use those.
       'dist/vendor/**/*.spec.js'
     ],
-    preprocessors: {},
-    reporters: ['progress'],
+
+    // Source files that you wanna generate coverage for.
+    // Do not include tests or libraries (these files will be instrumented by Istanbul)
+    preprocessors: {
+      'dist/app/**/!(*spec).js': ['coverage'],
+      'dist/app/**/*.js': ['sourcemap']
+    },
+
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [
+        {type: 'json', subdir: '.'}
+      ]
+    },
+    reporters: ['mocha', 'coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['PhantomJS'],
+    singleRun: true
   });
 };

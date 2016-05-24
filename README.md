@@ -2,7 +2,7 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Code Climate](https://codeclimate.com/github/equalize-squad/equalizei-front/badges/gpa.svg)](https://codeclimate.com/github/equalize-squad/equalizei-front)
-[![Test Coverage](https://codeclimate.com/github/equalize-squad/equalizei-front/badges/coverage.svg)](https://codeclimate.com/github/equalize-squad/equalizei-front/coverage)
+[![Codecov](https://codecov.io/gh/equalize-squad/equalizei-front/branch/master/graph/badge.svg)](https://codecov.io/gh/equalize-squad/equalizei-front)
 
 ## Setup the project
 
@@ -19,12 +19,22 @@
 ## Running unit tests
 
 ```bash
-ng test
+npm test
 ```
 Tests will execute after a build is executed via [Karma](http://karma-runner.github.io/0.13/index.html)
 
 If run with the watch argument `--watch` (shorthand `-w`) builds will run when source files have changed
 and tests will run after each successful build
+
+### Coverage
+
+After ran the unit tests, run the following command to see the coverage:
+
+```bash
+npm run coverage
+```
+
+and see the reports at `coverage` folder
 
 ## Running end-to-end tests
 
