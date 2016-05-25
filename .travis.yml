@@ -8,12 +8,13 @@ notifications:
   slack:
     secure: Z9OZIVUy1BM/CtnwYBH6TuTmfkhk/qkUCDso/TNVHlTqodPr8XqOBPZGc3gQWjUAcJ2khReHQz6HCteLwb+iq9D/L+7/+aRRfa1BniUzIdgIz/sNkkrjxQUZgcKLrlw+US4rR4/7uQpVXc9RawUJPgRvQTOvhHigG6kWUTRIKQyO0KjwDRqJbFGtkcz14+x/bNF6YGT1UEZwa4iKg8/ylG/aG5s/eZbJtto6J3k33aX1dVwYmWoOCOCfv1tKxN+imVPOVMtC2M+BHOvuJ6RIRYB6zBeCVTVV/2q7nO87Nt0Shx2jEotkNFlOhNrOYGh16burAZX/E7O19knU9aiHqx6lps1SXjys6vtn2PWk5YreyiaPZgtMOrepxDsEqWx3vfGRYxwegnfsNqRj0+q4yD3m2+80MyUg9226+6DFQXhNbpunKtklbxSUcScBZ0M/5bJp2HG3txDJnw7y1kuu0he5Ynx4xP0zeTVHXoB6EZzgMHVE1KNX2YzNzk6rgb/L20VVIypH3ubTVMUWBCfzGuK9kKcr4+LhWNDtvOmRiSOiXvDdfmSuqEuxftYqs7cHoI2Du1sCUGwp2TILrydFwA5AJhvk2nG0cBBtqy215Sf3/yoxaQiz6OHL5mXx9SZ4JWeHEG104wOgU3a8EQFakezeqM9rt5PjS//D8UOPTIw=
 before_install:
-- npm install -g angular-cli
+  - npm install -g angular-cli
 before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 branches:
   only:
   - master
 after_success:
-- cat coverage/lcov.info | ./node_modules/.bin/codecov
+  - npm run codecov
+  - npm run coveralls
