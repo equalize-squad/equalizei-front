@@ -16,7 +16,7 @@ exports.config = {
   cucumberOpts: {
     format: 'pretty',
     require: [
-      '../e2e/features/step_definitions/**/*.steps.ts'
+      '../e2e/**/*.steps.ts'
     ]
   },
   useAllAngular2AppRoots: true,
