@@ -1,0 +1,24 @@
+<h1> Sign Up </h1>
+<h3>{{message}}</h3>
+<form id="sign-up-form">
+<div>
+  <div>
+    <label>Name</label>
+    <input type="text" ng-bind="user.name" class="user-name" required />
+  </div>
+  <div>
+    <label>E-mail</label>
+    <input type="text" ng-bind="user.email" class="user-email" required />
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" ng-bind="user.pwd" class="user-password" />
+  </div>
+  <div>
+    <label>Password Confirm</label>
+    <input type="password"  ng-bind="user.pwdconfirm" class="user-password-confirmation input" required/>
+  </div>
+  <input type="submit" id="button_ok"  class="btn btn-default"  value="Ok" ng-click="submit();" >
+  <input type="button" id="button_calcel" class="btn btn-default" value="Cancel" ng-click="" >
+</div>
+</form>

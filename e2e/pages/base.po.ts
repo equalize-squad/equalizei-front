@@ -1,7 +1,20 @@
 export class BasePage {
 
+  private pages: Object;
+
+  constructor() {
+    this.pages = {
+      'home': '/',
+      'sign_up': '/sign_up'
+    };
+  }
+
   goToHome() {
-    return browser.get('/');
+    return browser.get(`${this.pages['home']}`);
+  }
+
+  goToSignUp() {
+    return browser.get(`${this.pages['sign_up']}`);
   }
 
   currentTitle():webdriver.promise.Promise<string> {

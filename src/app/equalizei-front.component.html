@@ -1,3 +1,6 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{title}}</h1>
+<nav>
+  <a [routerLink]="['/home']">Home</a>
+  <a [routerLink]="['/sign_up']">Sign Up</a>
+</nav>
+<router-outlet></router-outlet>
