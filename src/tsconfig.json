@@ -16,6 +16,7 @@
 
   "files": [
     "main.ts",
-    "typings.d.ts"
+    "typings.d.ts",
+    "system-config.ts"
   ]
 }
