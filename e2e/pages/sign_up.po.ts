@@ -3,6 +3,7 @@ import {BasePage} from './base.po';
 export class SignUpPage extends BasePage {
 
   private form;
+  private teamInput;
   private nameInput;
   private emailInput;
   private passwordInput;
@@ -13,55 +14,53 @@ export class SignUpPage extends BasePage {
   constructor() {
     super();
     this.form = element(by.id('sign-up-form'));
-    this.nameInput = element(by.css('.user-name'));
-    this.emailInput = this.form.element(by.css('.user-email'));
-    this.passwordInput = this.form.element(by.css('.user-password'));
-    this.passwordConfirmationInput = this.form.element(by.css('.user-password-confirmation'));
-    this.submitButton = this.form.element(by.id('button_ok'));
-    this.cancelButton = this.form.element(by.id('button_cancel'));
+    this.teamInput = this.form.element(by.id('user-team-input'));
+    this.nameInput = this.form.element(by.id('user-name-input'));
+    this.emailInput = this.form.element(by.id('user-email-input'));
+    this.passwordInput = this.form.element(by.id('user-password-input'));
+    this.passwordConfirmationInput = this.form.element(by.id('user-password-confirmation-input'));
+    this.submitButton = this.form.element(by.css('button[type="submit"]'));
+    this.cancelButton = this.form.element(by.className('.md-warn'));
   }
 
   getGreetings():webdriver.promise.Promise<string> {
-    return element(by.css('equalizei-front-app h1')).getText();
+    return element(by.css('app-sign-up h3')).getText();
+  }
+
+  setTeam(value: string) {
+    return this.teamInput.sendKeys(value);
   }
 
   setName(value: string) {
-    return super.fill(this.nameInput, value);
+    return this.nameInput.sendKeys(value);
   }
 
   setEmail(value: string) {
-    return super.fill(this.emailInput, value);
+    return this.emailInput.sendKeys(value);
   }
 
   setPassword(value: string) {
-    return super.fill(this.passwordInput, value);
+    return this.passwordInput.sendKeys(value);
   }
 
   setPasswordConfirmation(value: string) {
-    return super.fill(this.passwordConfirmationInput, value);
+    return this.passwordConfirmationInput.sendKeys(value);
   }
 
-  submit() {
+  signUp(name: string) {
+    this.setTeam("JDR");
+    this.setName(name);
+    this.setEmail("rafa@gmail.com");
+    this.setPassword("rafa123eq");
+    this.setPasswordConfirmation("rafa123eq");
     return this.submitButton.click();
+  }
+
+  canSubmit():webdriver.promise.Promise<boolean> {
+    return this.submitButton.isEnabled();
   }
 
   cancel() {
     return this.cancelButton.click();
-  }
-
-  getAllErrorMessages() {
-    return element.all(by.css('.error-group'));
-  }
-
-  hasErrorMessages() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value > 0;
-    });
-  }
-
-  formIsValid() {
-    return this.getAllErrorMessages().count().then(value => {
-      return value === 0;
-    });
   }
 }

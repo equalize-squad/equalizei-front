@@ -1,20 +1,16 @@
 export class BasePage {
 
-  private pages: Object;
+  private PAGE_HOME = '/';
+  private PAGE_SIGN_UP = '/sign_up';
 
-  constructor() {
-    this.pages = {
-      'home': '/',
-      'sign_up': '/sign_up'
-    };
-  }
+  constructor() { }
 
   goToHome() {
-    return browser.get(`${this.pages['home']}`);
+    return browser.get(this.PAGE_HOME);
   }
 
   goToSignUp() {
-    return browser.get(`${this.pages['sign_up']}`);
+    return browser.get(this.PAGE_SIGN_UP);
   }
 
   currentTitle():webdriver.promise.Promise<string> {
@@ -23,28 +19,5 @@ export class BasePage {
 
   getCurrentUrl() {
     return browser.getCurrentUrl();
-  }
-
-  wait():Promise<any> {
-    return new Promise<any>((resolve) => {
-      this.verifySpinner(resolve);
-    });
-  }
-
-  fill(input, value:string) {
-    return value.split('').forEach((c) => input.sendKeys(c));
-  }
-
-  private verifySpinner(resolve):webdriver.promise.Promise<any> {
-    return element(by.css('ion-spinner')).isPresent()
-      .then(
-        (present) => {
-          if (present) {
-            setTimeout(() => this.verifySpinner(resolve), 100);
-          } else {
-            resolve();
-          }
-        }
-      );
   }
 }

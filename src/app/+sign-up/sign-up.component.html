@@ -1,24 +1,89 @@
-<h1> Sign Up </h1>
 <h3>{{message}}</h3>
-<form id="sign-up-form">
-<div>
-  <div>
-    <label>Name</label>
-    <input type="text" ng-bind="user.name" class="user-name" required />
-  </div>
-  <div>
-    <label>E-mail</label>
-    <input type="text" ng-bind="user.email" class="user-email" required />
-  </div>
-  <div>
-    <label>Password</label>
-    <input type="password" ng-bind="user.pwd" class="user-password" />
-  </div>
-  <div>
-    <label>Password Confirm</label>
-    <input type="password"  ng-bind="user.pwdconfirm" class="user-password-confirmation input" required/>
-  </div>
-  <input type="submit" id="button_ok"  class="btn btn-default"  value="Ok" ng-click="submit();" >
-  <input type="button" id="button_calcel" class="btn btn-default" value="Cancel" ng-click="" >
+<div [hidden]="submitted">
+  <md-card class="demo-card demo-basic">
+    <md-toolbar color="primary">Sign Up</md-toolbar>
+    <md-card-content>
+      <form id="sign-up-form" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+        <div>
+          <md-input id="user-team"
+                    [(ngModel)]="model.team"
+                    ngControl="team" #team="ngForm"
+                    class="demo-full-width"
+                    placeholder="Team"
+                    required></md-input>
+        </div>
+        <div [hidden]="team.valid || team.pristine" class="alert alert-danger">
+          Team is required
+        </div>
+        <div>
+          <md-input id="user-name"
+                    [(ngModel)]="model.name"
+                    ngControl="name" #name="ngForm"
+                    class="demo-full-width"
+                    placeholder="Name"
+                    required></md-input>
+        </div>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+        <div>
+          <md-input id="user-email"
+                    [(ngModel)]="model.email"
+                    ngControl="email" #email="ngForm"
+                    class="demo-full-width"
+                    placeholder="Email"
+                    type="email"
+                    required></md-input>
+        </div>
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          Email is required
+        </div>
+        <div>
+          <md-input id="user-password"
+                    [(ngModel)]="model.password"
+                    ngControl="password" #password="ngForm"
+                    class="demo-full-width"
+                    placeholder="Password"
+                    type="password"
+                    required></md-input>
+        </div>
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          Password is required
+        </div>
+        <div>
+          <md-input id="user-password-confirmation"
+                    [(ngModel)]="model.password_confirmation"
+                    ngControl="password_confirmation" #passwordConfirmation="ngForm"
+                    class="demo-full-width"
+                    placeholder="Confirm Password"
+                    type="password"
+                    required></md-input>
+        </div>
+        <div [hidden]="passwordConfirmation.valid || passwordConfirmation.pristine" class="alert alert-danger">
+          Password Confirmation is required
+        </div>
+        <button type="submit"
+                md-raised-button
+                color="primary"
+                [disabled]="!signUpForm.form.valid">Submit</button>
+        <button md-raised-button
+                color="warn">Cancel</button>
+      </form>
+    </md-card-content>
+  </md-card>
 </div>
-</form>
+
+<div [hidden]="!submitted">
+  <md-card class="demo-card demo-basic">
+    <md-card-subtitle>{{model.team}}</md-card-subtitle>
+    <md-card-title>{{model.name}}</md-card-title>
+    <md-card-content>
+      {{model.email}}
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button
+              color="warn"
+              (click)="onEdit()">Edit</button>
+    </md-card-actions>
+  </md-card>
+</div>
