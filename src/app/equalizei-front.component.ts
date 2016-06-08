@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes , ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, Routes, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from '@angular/router';
 import { HomeComponent } from './+home';
 import { SignUpComponent } from './+sign-up';
+import { UserComponent } from './+user';
 
 @Component({
   moduleId: module.id,
   selector: 'equalizei-front-app',
   templateUrl: 'equalizei-front.component.html',
-  styleUrls: ['equalizei-front.component.css'],
-  directives: [ROUTER_DIRECTIVES]
-,
+  styleUrls: ['equalizei-front.component.css']
+  ,directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS]
 })
 @Routes([
   {path: '/home', component: HomeComponent},
-  {path: '/sign_up', component: SignUpComponent}
+  {path: '/sign_up', component: SignUpComponent},
+  {path: '/user', component: UserComponent}
 ])
 export class EqualizeiFrontAppComponent implements OnInit {
   title = 'Equalizei rocks!';
