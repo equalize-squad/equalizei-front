@@ -22,7 +22,7 @@ before_script:
 script:
   - npm test
   - cd dist && python -m SimpleHTTPServer 4200 >> python_serve.log 2>&1 &
-  - npm run e2e ./config/protractor.conf.js
+  - npm run e2e ./config/protractor.conf.js --cucumberOpts.tags="~@ignore"
 after_success:
   - npm run codecov
   - npm run coveralls
