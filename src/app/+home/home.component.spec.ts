@@ -6,9 +6,10 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
+
 import { HomeComponent } from './home.component';
 
 describe('Component: Home', () => {
@@ -43,4 +44,3 @@ describe('Component: Home', () => {
 })
 class HomeComponentTestController {
 }
-
