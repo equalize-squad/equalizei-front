@@ -6,9 +6,10 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
+
 import { SignUpComponent } from './sign-up.component';
 
 describe('Component: SignUp', () => {
@@ -43,4 +44,3 @@ describe('Component: SignUp', () => {
 })
 class SignUpComponentTestController {
 }
-

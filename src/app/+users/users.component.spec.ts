@@ -6,28 +6,29 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { UserComponent } from './user.component';
 
-describe('Component: User', () => {
+import { UsersComponent } from './users.component';
+
+describe('Component: Users', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [UserComponent]);
+  beforeEachProviders(() => [UsersComponent]);
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
 
-  it('should inject the component', inject([UserComponent],
-      (component: UserComponent) => {
+  it('should inject the component', inject([UsersComponent],
+      (component: UsersComponent) => {
     expect(component).toBeTruthy();
   }));
 
   it('should create the component', inject([], () => {
-    return builder.createAsync(UserComponentTestController)
+    return builder.createAsync(UsersComponentTestController)
       .then((fixture: ComponentFixture<any>) => {
-        let query = fixture.debugElement.query(By.directive(UserComponent));
+        let query = fixture.debugElement.query(By.directive(UsersComponent));
         expect(query).toBeTruthy();
         expect(query.componentInstance).toBeTruthy();
       });
@@ -37,10 +38,9 @@ describe('Component: User', () => {
 @Component({
   selector: 'test',
   template: `
-    <app-user></app-user>
+    <app-users></app-users>
   `,
-  directives: [UserComponent]
+  directives: [UsersComponent]
 })
-class UserComponentTestController {
+class UsersComponentTestController {
 }
-

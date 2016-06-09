@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/common';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
-import { User } from '../+user/user.model';
+import { NgForm } from '@angular/common';
+
+import { User } from '../+users/shared/user.model';
 
 @Component({
   moduleId: module.id,
@@ -21,13 +22,14 @@ export class SignUpComponent implements OnInit {
 
   constructor() {
   }
+
   ngOnInit() {
     this.reset();
   }
 
   onSubmit() {
     this.submitted = true;
-    this.message = 'Welcome ' + this.model.name + '!';
+    this.message = `Welcome ${this.model.name}!`;
   }
 
   onEdit() {

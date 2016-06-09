@@ -5,6 +5,7 @@ import {
   it,
   inject
 } from '@angular/core/testing';
+
 import { EqualizeiFrontAppComponent } from '../app/equalizei-front.component';
 
 beforeEachProviders(() => [EqualizeiFrontAppComponent]);
