@@ -7,6 +7,6 @@ export class HomePage extends BasePage {
   }
 
   getGreetings():webdriver.promise.Promise<string> {
-    return element(by.css('equalizei-front-app h1')).getText();
+    return element(by.css('equalizei-app h1')).getText();
   }
 }

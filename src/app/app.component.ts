@@ -6,9 +6,9 @@ import { SignUpComponent } from './+sign-up';
 
 @Component({
   moduleId: module.id,
-  selector: 'equalizei-front-app',
-  templateUrl: 'equalizei-front.component.html',
-  styleUrls: ['equalizei-front.component.css'],
+  selector: 'equalizei-app',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [ROUTER_PROVIDERS]
 })
@@ -16,7 +16,7 @@ import { SignUpComponent } from './+sign-up';
   {path: '/home', component: HomeComponent},
   {path: '/sign_up', component: SignUpComponent}
 ])
-export class EqualizeiFrontAppComponent implements OnInit {
+export class AppComponent implements OnInit {
   title = 'Equalizei rocks!';
   // constructor(private router: Router) {}
   ngOnInit() {
