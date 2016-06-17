@@ -3,11 +3,16 @@
  **********************************************************************************************/
  /** Map relative paths to URLs. */
  const map:any = {
-   '@angular2-material': 'vendor/@angular2-material'
+   '@angular2-material': 'vendor/@angular2-material',
+   'angular2-devise-token-auth': 'vendor/angular2-devise-token-auth/dist'
  };
 
 /** User packages configuration. */
-const packages: any = {};
+const packages: any = {
+  'angular2-devise-token-auth': {
+    main: 'angular2-devise-token-auth.js'
+  }
+};
 
 // put the names of any of your Material components here
 const materialPkgs:string[] = [
