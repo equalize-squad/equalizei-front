@@ -1,12 +1,12 @@
 export class BasePage {
 
-  private PAGE_HOME = '/';
-  private PAGE_SIGN_UP = '/sign_up';
+  private PAGE_USERS = '/users';
+  private PAGE_SIGN_UP = '/sign-up';
 
   constructor() { }
 
-  goToHome() {
-    return browser.get(this.PAGE_HOME);
+  goToUsers() {
+    return browser.get(this.PAGE_USERS);
   }
 
   goToSignUp() {

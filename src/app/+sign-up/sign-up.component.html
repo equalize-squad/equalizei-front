@@ -1,4 +1,3 @@
-<h3>{{message}}</h3>
 <div [hidden]="submitted">
   <md-card class="demo-card demo-basic">
     <md-toolbar color="primary">Sign Up</md-toolbar>
@@ -74,6 +73,7 @@
 </div>
 
 <div [hidden]="!submitted">
+  <h3>{{message}}</h3>
   <md-card class="demo-card demo-basic">
     <md-card-subtitle>{{model.team}}</md-card-subtitle>
     <md-card-title>{{model.name}}</md-card-title>

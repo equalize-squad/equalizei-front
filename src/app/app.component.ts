@@ -1,25 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES }  from '@angular/router';
 
-import { HomeComponent } from './+home';
+import { UsersComponent } from './+users';
 import { SignUpComponent } from './+sign-up';
+import { SignInComponent } from './+sign-in';
 
 @Component({
   moduleId: module.id,
   selector: 'equalizei-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  directives: [ROUTER_DIRECTIVES],
-  providers: [ROUTER_PROVIDERS]
+  directives: [ROUTER_DIRECTIVES]
 })
-@Routes([
-  {path: '/home', component: HomeComponent},
-  {path: '/sign_up', component: SignUpComponent}
-])
 export class AppComponent implements OnInit {
   title = 'Equalizei rocks!';
-  // constructor(private router: Router) {}
+
+  constructor() {
+  }
+
   ngOnInit() {
-  //   this.router.navigate(['/home']);
   }
 }
