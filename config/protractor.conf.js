@@ -7,7 +7,7 @@ exports.config = {
     '../e2e/features/**/*.feature'
   ],
   capabilities: {
-    'browserName': 'firefox'//'chrome'
+    'browserName': 'chrome'
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
