@@ -15,6 +15,6 @@ export = function() {
   });
 
   this.Then(/^I should be redirected to the 'Sign In' page$/, (callback:Callback) => {
-    expect(page.getGreetings()).to.eventually.equal('Sign In!').and.notify(callback);
+    expect(page.getCurrentUrl()).to.eventually.contain(page.PAGE_SIGN_IN).and.notify(callback);
   });
 };
