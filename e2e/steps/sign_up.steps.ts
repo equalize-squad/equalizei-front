@@ -4,8 +4,9 @@ import {SignUpPage} from '../pages/sign_up.po';
 export = function() {
 
   let page = new SignUpPage();
-  const INVALID_DATA = '';
-  const VALID_DATA = 'Rafa';
+  const INVALID_DATA = "";
+  const NAME = "Rafa";
+  const EMAIL = "rafa@gmail.com";
 
   this.Given(/^I am at the 'Sign Up' page$/, (callback:Callback) => {
     page.goToSignUp();
@@ -13,7 +14,7 @@ export = function() {
   });
 
   this.When(/^I sign up with invalid data$/, (callback:Callback) => {
-    page.signUp(INVALID_DATA).then(() => {
+    page.signUp(INVALID_DATA, INVALID_DATA).then(() => {
       callback();
     });
   });
@@ -24,13 +25,24 @@ export = function() {
   });
 
   this.When(/^I sign up with valid data$/, (callback:Callback) => {
-    page.signUp(VALID_DATA).then(() => {
+    page.signUp(NAME, EMAIL).then(() => {
       callback();
     });
   });
 
-  this.Then(/^I should see a successful sign up message$/, (callback:Callback) => {
-    expect(page.getGreetings()).to.eventually.equal(`Welcome ${VALID_DATA}!`)
+  this.Then(/^I should see a sign up success message$/, (callback:Callback) => {
+    expect(page.getGreetings()).to.eventually.equal(`user works!`)
+                               .and.notify(callback);
+  });
+
+  this.When(/^I sign up with existent data$/, (callback:Callback) => {
+    page.signUp(NAME, EMAIL).then(() => {
+      callback();
+    });
+  });
+
+  this.Then(/^I should see a sign up error message$/, (callback:Callback) => {
+    expect(page.getAlert()).to.eventually.equal(`Email already in use`)
                                .and.notify(callback);
   });
 };

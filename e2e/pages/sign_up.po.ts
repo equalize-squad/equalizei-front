@@ -23,8 +23,12 @@ export class SignUpPage extends BasePage {
     this.cancelButton = this.form.element(by.className('.md-warn'));
   }
 
+  getAlert():webdriver.promise.Promise<string> {
+    return element(by.css('app-alert md-card-content p')).getText();
+  }
+
   getGreetings():webdriver.promise.Promise<string> {
-    return element(by.css('app-sign-up h3')).getText();
+    return element(by.css('app-users p')).getText();
   }
 
   setTeam(value: string) {
@@ -47,10 +51,10 @@ export class SignUpPage extends BasePage {
     return this.passwordConfirmationInput.sendKeys(value);
   }
 
-  signUp(name: string) {
+  signUp(name: string, email: string) {
     this.setTeam("JDR");
     this.setName(name);
-    this.setEmail("rafa@gmail.com");
+    this.setEmail(email);
     this.setPassword("rafa123eq");
     this.setPasswordConfirmation("rafa123eq");
     return this.submitButton.click();

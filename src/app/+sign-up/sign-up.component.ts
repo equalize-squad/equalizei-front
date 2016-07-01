@@ -4,9 +4,10 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 import { NgForm } from '@angular/common';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { AuthService } from 'angular2-devise-token-auth';
 
+import { AlertComponent } from '../shared/alert/alert.component';
 import { User } from '../+users/user/shared/user.model';
 
 @Component({
@@ -14,23 +15,18 @@ import { User } from '../+users/user/shared/user.model';
   selector: 'app-sign-up',
   templateUrl: 'sign-up.component.html',
   styleUrls: ['sign-up.component.css'],
-  directives: [ROUTER_DIRECTIVES, MD_BUTTON_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, MD_TOOLBAR_DIRECTIVES]
+  directives: [AlertComponent, ROUTER_DIRECTIVES, MD_BUTTON_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, MD_TOOLBAR_DIRECTIVES]
 })
 export class SignUpComponent implements OnInit {
-  message = null;
-  submitted = false;
+  error = null;
   model = new User();
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
-  ngOnInit() {
-    this.reset();
-  }
+  ngOnInit() {}
 
   onSubmit() {
-    this.submitted = true;
-    this.message = `Welcome ${this.model.name}!`;
     this.authService
       .signUp({
         name: this.model.name,
@@ -39,15 +35,12 @@ export class SignUpComponent implements OnInit {
         password_confirmation: this.model.password_confirmation,
       })
       .map(res => res.json())
-      .subscribe(res => console.log('hey', res));
-  }
-
-  onEdit() {
-    this.reset();
-  }
-
-  reset() {
-    this.submitted = false;
-    this.message = 'Sign Up Works!';
+      .subscribe(res => {
+          localStorage.setItem('user', JSON.stringify(res.data));
+          this.router.navigate(['/users']);
+        }, error => {
+          this.error = error.errors.full_messages;
+        }
+      );
   }
 }

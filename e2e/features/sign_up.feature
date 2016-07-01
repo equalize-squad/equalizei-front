@@ -13,4 +13,8 @@ Feature: Sign up
 
   Scenario: User signs up with valid data
     When I sign up with valid data
-    Then I should see a successful sign up message
+    Then I should see a sign up success message
+
+  Scenario: User signs up with existent data
+    When I sign up with existent data
+    Then I should see a sign up error message
