@@ -1,36 +1,45 @@
-<md-card class="demo-card demo-basic">
-  <md-toolbar color="primary">Sign In</md-toolbar>
-  <md-card-content>
+<div class="sign-in">
+  <md-card>
+    <md-card-title>
+      <img class="logo" src="/images/logo.png" alt="Equalize">
+    </md-card-title>
+    <app-message [title]="'Erro'" [message]="error"></app-message>
     <form id="sign-in-form" (ngSubmit)="signIn()" #signInForm="ngForm">
-      <div>
-        <md-input id="user-email"
-                  [(ngModel)]="model.email"
-                  ngControl="email" #email="ngForm"
-                  class="demo-full-width"
-                  placeholder="Email"
-                  type="email"
-                  required></md-input>
-      </div>
-      <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-        Email is required
-      </div>
-      <div>
-        <md-input id="user-password"
-                  [(ngModel)]="model.password"
-                  ngControl="password" #password="ngForm"
-                  class="demo-full-width"
-                  placeholder="Password"
-                  type="password"
-                  required></md-input>
-      </div>
-      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-        Password is required
-      </div>
-      <button type="submit"
-              md-raised-button
-              color="primary"
-              [disabled]="!signInForm.form.valid">Submit</button>
-      <button md-raised-button color="warn">Cancel</button>
+      <md-card-content>
+        <div>
+          <md-input id="user-email"
+                    [(ngModel)]="model.email"
+                    name="email"
+                    #email="ngModel"
+                    class="demo-full-width"
+                    placeholder="Email"
+                    type="email"
+                    required></md-input>
+        </div>
+        <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+          Email is required
+        </div>
+        <div>
+          <md-input id="user-password"
+                    [(ngModel)]="model.password"
+                    name="password"
+                    #password="ngModel"
+                    class="demo-full-width"
+                    placeholder="Password"
+                    type="password"
+                    required></md-input>
+        </div>
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          Password is required
+        </div>
+      </md-card-content>
+      <md-card-actions class="text-center">
+        <button type="submit" md-raised-button color="primary" [disabled]="!signInForm.form.valid">Entrar</button>
+      </md-card-actions>
     </form>
-  </md-card-content>
-</md-card>
+    <md-card-actions>
+      <a md-button color="secondary">Esqueceu a senha?</a>
+      <a md-button color="primary" [routerLink]="['/sign-up']" class="float-right">Cadastre-se</a>
+    </md-card-actions>
+  </md-card>
+</div>

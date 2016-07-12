@@ -6,21 +6,52 @@ import {
   it,
   inject,
 } from '@angular/core/testing';
-import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
-import { Component } from '@angular/core';
+
+import { ActivatedRoute, DefaultUrlSerializer, Router, RouterConfig, RouterOutletMap, UrlSerializer } from '@angular/router';
+import { Location, LocationStrategy } from '@angular/common';
+import { MockLocationStrategy } from '@angular/common/testing/mock_location_strategy';
+import { SpyLocation } from '@angular/common/testing';
+
 import { By } from '@angular/platform-browser';
+import { ComponentFixture, TestComponentBuilder } from '@angular/compiler/testing';
+import { Component, provide, ComponentResolver, Injector} from '@angular/core';
+import { Headers, HTTP_PROVIDERS, BaseRequestOptions, XHRBackend, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+
+import { AUTH_PROVIDERS, authService } from 'angular2-devise-token-auth';
+import { AppComponent} from '../app.component';
 import { SignInComponent } from './sign-in.component';
 
 describe('Component: SignIn', () => {
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [SignInComponent]);
+  beforeEachProviders(() => {
+    let config: RouterConfig = [{path: '', component: AppComponent}];
+    return [
+      RouterOutletMap,
+      {provide: UrlSerializer, useClass: DefaultUrlSerializer},
+      {provide: Location, useClass: SpyLocation},
+      {provide: LocationStrategy, useClass: MockLocationStrategy},
+      {
+        provide: Router,
+        useFactory: (resolver: ComponentResolver, urlSerializer: UrlSerializer, outletMap: RouterOutletMap, location: Location, injector: Injector) => {
+          return new Router(AppComponent, resolver, urlSerializer, outletMap, location, injector, config);
+        },
+        deps: [ComponentResolver, UrlSerializer, RouterOutletMap, Location, Injector]
+      },
+      {provide: ActivatedRoute, useFactory: (r: Router) => r.routerState.root, deps: [Router]},
+      AUTH_PROVIDERS,
+      authService(`http://localhost/auth`),
+      SignInComponent
+    ];
+  });
+
   beforeEach(inject([TestComponentBuilder], function (tcb: TestComponentBuilder) {
     builder = tcb;
   }));
 
-  it('should inject the component', inject([SignInComponent],
-      (component: SignInComponent) => {
+  it('should inject the component', inject([XHRBackend, SignInComponent], (mockBackend: MockBackend, component: SignInComponent) => {
     expect(component).toBeTruthy();
   }));
 
@@ -43,4 +74,3 @@ describe('Component: SignIn', () => {
 })
 class SignInComponentTestController {
 }
-
