@@ -1,10 +1,8 @@
-<div [hidden]="!title || !message">
-  <md-card>
-     <md-card-title>{{title}}</md-card-title>
-     <md-card-content>
-          <p>
-            {{message}}
-          </p>
-     </md-card-content>
-  </md-card>
-</div>
+<md-card *ngIf="message" class="{{message.type}}">
+  <md-card-title>{{message.title}}</md-card-title>
+  <md-card-content>
+      <p>
+        {{message.description}}
+      </p>
+  </md-card-content>
+</md-card>
