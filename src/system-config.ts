@@ -45,6 +45,7 @@ const barrels: string[] = [
   // Angular specific barrels.
   '@angular/core',
   '@angular/common',
+  '@angular/forms',
   '@angular/compiler',
   '@angular/http',
   '@angular/router',
