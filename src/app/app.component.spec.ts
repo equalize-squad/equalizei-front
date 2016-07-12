@@ -19,7 +19,7 @@ import { MessageService, MessageComponent } from './shared/message/index';
 beforeEachProviders(() => {
   let config: RouterConfig = [{path: '', component: AppComponent}];
   return [
-     RouterOutletMap,
+    RouterOutletMap,
     {provide: UrlSerializer, useClass: DefaultUrlSerializer},
     {provide: Location, useClass: SpyLocation},
     {
