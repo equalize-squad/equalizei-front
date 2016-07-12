@@ -4,14 +4,12 @@ import {
   describe,
   expect,
   it,
-  inject,
-  injectAsync,
+  inject
 } from '@angular/core/testing';
 
 import { ActivatedRoute, DefaultUrlSerializer, Router, RouterConfig, RouterOutletMap, UrlSerializer } from '@angular/router';
 import { Location, LocationStrategy } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
-import { MockLocationStrategy } from '@angular/common/testing/mock_location_strategy';
 import { SpyLocation } from '@angular/common/testing';
 
 import { By } from '@angular/platform-browser';
@@ -51,7 +49,6 @@ describe('Component: SignUp', () => {
       RouterOutletMap,
       {provide: UrlSerializer, useClass: DefaultUrlSerializer},
       {provide: Location, useClass: SpyLocation},
-      {provide: LocationStrategy, useClass: MockLocationStrategy},
       {
         provide: Router,
         useFactory: (resolver: ComponentResolver, urlSerializer: UrlSerializer, outletMap: RouterOutletMap, location: Location, injector: Injector) => {
