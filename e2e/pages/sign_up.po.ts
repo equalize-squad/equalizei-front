@@ -3,7 +3,6 @@ import {BasePage} from './base.po';
 export class SignUpPage extends BasePage {
 
   private form;
-  private teamInput;
   private nameInput;
   private emailInput;
   private passwordInput;
@@ -14,7 +13,6 @@ export class SignUpPage extends BasePage {
   constructor() {
     super();
     this.form = element(by.id('sign-up-form'));
-    this.teamInput = this.form.element(by.id('user-team-input'));
     this.nameInput = this.form.element(by.id('user-name-input'));
     this.emailInput = this.form.element(by.id('user-email-input'));
     this.passwordInput = this.form.element(by.id('user-password-input'));
@@ -23,16 +21,8 @@ export class SignUpPage extends BasePage {
     this.cancelButton = this.form.element(by.className('.md-warn'));
   }
 
-  getAlert():webdriver.promise.Promise<string> {
-    return element(by.css('app-alert md-card-content p')).getText();
-  }
-
   getGreetings():webdriver.promise.Promise<string> {
     return element(by.css('app-users p')).getText();
-  }
-
-  setTeam(value: string) {
-    return this.teamInput.sendKeys(value);
   }
 
   setName(value: string) {
@@ -52,7 +42,6 @@ export class SignUpPage extends BasePage {
   }
 
   signUp(name: string, email: string) {
-    this.setTeam("JDR");
     this.setName(name);
     this.setEmail(email);
     this.setPassword("rafa123eq");

@@ -13,8 +13,9 @@ Feature: Sign up
 
   Scenario: User signs up with valid data
     When I sign up with valid data
-    Then I should see a sign up success message
+    Then I should be at the 'Sign in' page
+    And I should see a success message
 
   Scenario: User signs up with existent data
     When I sign up with existent data
-    Then I should see a sign up error message
+    Then I should see an error message

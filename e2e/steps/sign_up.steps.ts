@@ -30,9 +30,8 @@ export = function() {
     });
   });
 
-  this.Then(/^I should see a sign up success message$/, (callback:Callback) => {
-    expect(page.getGreetings()).to.eventually.equal(`user works!`)
-                               .and.notify(callback);
+  this.Then(/^I should be at the 'Sign in' page$/, (callback:Callback) => {
+    expect(page.getCurrentUrl()).to.eventually.contain(page.PAGE_SIGN_IN).and.notify(callback);
   });
 
   this.When(/^I sign up with existent data$/, (callback:Callback) => {
@@ -41,8 +40,13 @@ export = function() {
     });
   });
 
-  this.Then(/^I should see a sign up error message$/, (callback:Callback) => {
-    expect(page.getAlert()).to.eventually.equal(`Email already in use`)
+  this.Then(/^I should see a success message$/, (callback:Callback) => {
+    expect(page.getAppMessage().getAttribute('class')).to.eventually.equals('success')
+                               .and.notify(callback);
+  });
+
+  this.Then(/^I should see an error message$/, (callback:Callback) => {
+    expect(page.getAppMessage().getAttribute('class')).to.eventually.equals('error')
                                .and.notify(callback);
   });
 };

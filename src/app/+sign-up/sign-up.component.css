@@ -1,7 +1,40 @@
-.ng-valid[required] {
-  border-left: 5px solid #42A948; /* green */
+body {
+  height: 100vh;
 }
 
-.ng-invalid {
-  border-left: 5px solid #a94442; /* red */
+.text-center {
+  text-align: center;
+}
+
+.float-right {
+  float: right;
+}
+
+.sign-up {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.sign-up md-card {
+  width: 30em;
+  box-sizing: border-box;
+  margin: 16em;
+}
+
+md-card-title {
+  text-align: center;
+}
+
+md-card-title .logo {
+  width: 10em;
+}
+
+md-input {
+  margin: 8px 0;
+  width: 100%;
+}
+
+md-card-actions button[type=submit] {
+  width: 42%;
 }

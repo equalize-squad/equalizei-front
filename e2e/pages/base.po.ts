@@ -1,7 +1,9 @@
 export class BasePage {
 
-  private PAGE_USERS = '/users';
-  private PAGE_SIGN_UP = '/sign-up';
+  public PAGE_DASHBOARD = '/dashboard';
+  public PAGE_USERS = '/users';
+  public PAGE_SIGN_UP = '/sign-up';
+  public PAGE_SIGN_IN = '/sign-in';
 
   constructor() { }
 
@@ -20,4 +22,8 @@ export class BasePage {
   getCurrentUrl() {
     return browser.getCurrentUrl();
   }
+
+  getAppMessage() {
+    return element(by.css('app-message md-card'));
+  }  
 }
