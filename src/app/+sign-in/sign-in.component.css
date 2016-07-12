@@ -1,0 +1,40 @@
+body {
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.float-right {
+  float: right;
+}
+
+.sign-in {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+md-card {
+  width: 30em;
+  box-sizing: border-box;
+  margin: 16em;
+}
+
+md-card-title {
+  text-align: center;
+}
+
+md-card-title .logo {
+  width: 10em;
+}
+
+md-input {
+  margin: 8px 0;
+  width: 100%;
+}
+
+md-card-actions button[type=submit] {
+  width: 42%;
+}

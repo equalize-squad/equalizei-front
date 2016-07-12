@@ -1,0 +1,69 @@
+<div class="sign-up">
+  <md-card>
+    <md-card-title>
+      <img class="logo" src="/images/logo.png" alt="Equalize">
+    </md-card-title>
+    <app-message [message]="error"></app-message>
+    <form id="sign-up-form" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+      <md-card-content>
+          <div>
+            <md-input id="user-name"
+                      [(ngModel)]="model.name"
+                      name="name"
+                      #name="ngModel"
+                      class="demo-full-width"
+                      placeholder="Name"
+                      required></md-input>
+          </div>
+          <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Name is required
+          </div>
+          <div>
+            <md-input id="user-email"
+                      [(ngModel)]="model.email"
+                      name="email"
+                      #email="ngModel"
+                      class="demo-full-width"
+                      placeholder="Email"
+                      type="email"
+                      required></md-input>
+          </div>
+          <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+            Email is required
+          </div>
+          <div>
+            <md-input id="user-password"
+                      [(ngModel)]="model.password"
+                      name="password"
+                      #password="ngModel"
+                      class="demo-full-width"
+                      placeholder="Password"
+                      type="password"
+                      required></md-input>
+          </div>
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password is required
+          </div>
+          <div>
+            <md-input id="user-password-confirmation"
+                      [(ngModel)]="model.password_confirmation"
+                      name="passwordConfirmation"
+                      #passwordConfirmation="ngModel"
+                      class="demo-full-width"
+                      placeholder="Confirm Password"
+                      type="password"
+                      required></md-input>
+          </div>
+          <div [hidden]="passwordConfirmation.valid || passwordConfirmation.pristine" class="alert alert-danger">
+            Password Confirmation is required
+          </div>
+      </md-card-content>
+      <md-card-actions class="text-center">
+        <button type="submit" md-raised-button color="primary" [disabled]="!signUpForm.form.valid">Cadastrar</button>
+      </md-card-actions>
+    </form>
+    <md-card-actions>
+      <a md-button color="primary" [routerLink]="['/sign-in']">Já sou cadastrado</a>
+    </md-card-actions>
+  </md-card>
+</div>

@@ -1,13 +1,41 @@
 /***********************************************************************************************
  * User Configuration.
  **********************************************************************************************/
-/** Map relative paths to URLs. */
-const map: any = {
-};
+ /** Map relative paths to URLs. */
+ const map:any = {
+   '@angular2-material': 'vendor/@angular2-material',
+   'angular2-devise-token-auth': 'vendor/angular2-devise-token-auth/dist'
+ };
 
 /** User packages configuration. */
 const packages: any = {
+  'angular2-devise-token-auth': {
+    main: 'angular2-devise-token-auth.js'
+  }
 };
+
+// put the names of any of your Material components here
+const materialPkgs:string[] = [
+  'core',
+  'button',
+  'card',
+  'checkbox',
+  'grid-list',
+  'icon',
+  'input',
+  'list',
+  'progress-bar',
+  'progress-circle',
+  'radio',
+  'sidenav',
+  'slide-toggle',
+  'tabs',
+  'toolbar'
+];
+
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
@@ -17,6 +45,7 @@ const barrels: string[] = [
   // Angular specific barrels.
   '@angular/core',
   '@angular/common',
+  '@angular/forms',
   '@angular/compiler',
   '@angular/http',
   '@angular/router',
@@ -28,7 +57,12 @@ const barrels: string[] = [
 
   // App specific barrels.
   'app',
+  'app/+sign-up',
+  'app/+users',
   'app/shared',
+  'app/+sign-in',
+  'app/message',
+  'app/+dashboard',
   /** @cli-barrel */
 ];
 
