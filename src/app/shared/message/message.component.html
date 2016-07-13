@@ -1,4 +1,4 @@
-<md-card *ngIf="message" class="{{message.type}}">
+<md-card *ngIf="message && message.type" class="{{message.type}}">
   <md-card-title>{{message.title}}</md-card-title>
   <md-card-content>
       <p>
