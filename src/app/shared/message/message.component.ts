@@ -18,11 +18,8 @@ export class MessageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    if(!this.message && this.type && this.title && this.description) {
-      this.message = new Message(this.type, this.title, this.description);
-    }
-    if(this.message && (!this.message.type || !this.message.title || !this.message.description)) {
-        this.message = null;
+    if(!this.message && (this.type && this.title && this.description)) {
+      this.message = new Message(this.type, this.title, this.description)
     }
   }
 }
